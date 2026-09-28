@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AI learning workspace for explanations, questions, summaries, quizzes, and study plans.">
+  <title>EduGenie Learning Assistant</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="nav-brand" href="/" aria-label="EduGenie home">
+        <span class="nav-logo" aria-hidden="true">E</span>
+        <span class="nav-title"><strong>EduGenie</strong><small>Gemini Powered Learning Assistant</small></span>
+      </a>
+      <span class="nav-status" id="api-status"><span aria-hidden="true"></span><span>Checking API</span></span>
+    </nav>
+  </header>
+  <main>
+    <section class="workspace" aria-label="EduGenie learning assistant">
+      <form id="learning-form">
+        <div class="form-heading"><h2 id="form-title">Ask EduGenie</h2><p id="hint">Ask about any academic topic.</p></div>
+        <label for="task">Learning mode</label><div class="select-wrap"><select id="task" name="task"><option value="qa">Ask a question</option><option value="explain">Explain a topic</option><option value="summarize">Summarize text</option><option value="quiz">Generate a quiz</option><option value="recommendations">Build a learning path</option></select></div>
+        <label for="user-input" id="input-label">Your question</label><div class="textarea-wrap"><textarea id="user-input" name="input" maxlength="20000" required placeholder="Enter your question here..."></textarea><span id="character-count">0 / 20,000</span></div>
+        <div class="form-footer"><span class="shortcut">Enter to submit · Shift + Enter for a new line</span><button type="submit" id="submit-button"><span>Ask EduGenie</span><span aria-hidden="true">→</span></button></div>
+      </form>
+      <section class="result" id="result" aria-live="polite" aria-busy="false">
+        <div class="empty-state" id="empty-state"><span aria-hidden="true">✦</span><div><strong>Your answer will appear here</strong><p>Choose a mode, enter your topic, and let EduGenie do the rest.</p></div></div>
+        <div id="result-content" hidden><div class="result-heading"><h2 id="result-title">Answer</h2><div class="result-actions"><span id="model-badge"></span><button type="button" id="copy-button" class="copy-button">Copy</button></div></div><div id="answer"></div></div>
+      </section>
+    </section>
+  </main>
+  <script src="config.js"></script>
+  <script src="app.js" defer></script>
+</body></html>
