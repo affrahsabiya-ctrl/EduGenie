@@ -62,7 +62,12 @@ class EduGenieService:
                     if "429" in message or "RESOURCE_EXHAUSTED" in message:
                         quota_error = exc
                         break
-                    temporary = "503" in message or "UNAVAILABLE" in message or "high demand" in message.lower()
+                    temporary = (
+                        any(status in message for status in ("500", "502", "503", "504"))
+                        or "INTERNAL" in message
+                        or "UNAVAILABLE" in message
+                        or "high demand" in message.lower()
+                    )
                     if not temporary:
                         raise RuntimeError(f"The AI service could not complete the request: {exc}") from exc
                     if attempt == 2:
